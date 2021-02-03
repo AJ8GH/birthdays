@@ -1,6 +1,8 @@
 require 'birthday_list'
 
 describe BirthdayList do
+  let(:steve) { {name: 'Steve', date: '30-05-1989'} }
+
   describe '#birthdays' do
     it { is_expected.to respond_to :birthdays }
 
@@ -11,9 +13,14 @@ describe BirthdayList do
 
   describe '#add' do
     it 'adds a birthday' do
-      adam = double(name: 'Adam', birthday: '25-09-1988')
-      subject.add(adam)
-      expect(subject.birthdays.pop).to be adam
+      subject.add(steve)
+      expect(subject.birthdays.pop).to be_an_instance_of Birthday
     end
   end
+
+  # describe '#birthday_initializer' do
+  #   it 'creates a Birthday' do
+  #     expect(subject)
+  #   end
+  # end
 end
